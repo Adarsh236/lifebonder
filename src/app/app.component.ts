@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+//using bootstrap for modal
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -20,6 +21,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 
 export class AppComponent {
+  // all the variables
+  userImg = "https://dyl80ryjxr1ke.cloudfront.net/external_assets/hero_examples/hair_beach_v1785392215/original.jpeg";
   userId = 2;
   name = "Maria Khanam Tondra";
   menu = "Public";
@@ -35,10 +38,12 @@ export class AppComponent {
     this.modalService.open(longContent, { scrollable: true });
   }
 
+  //this function will change the value according to the selected dropdown menu
   selectDropdown(value) {
     this.menu = value;
   }
 
+  // upload picture from system
   selectFile(event) {
     if (!event.target.files[0] || event.target.files[0].length == 0) {
       return;
@@ -46,6 +51,7 @@ export class AppComponent {
 
     var mimeType = event.target.files[0].type;
 
+    // use of regex to validate proper file name
     if (mimeType.match(/image\/*/) == null) {
       return;
     }
@@ -58,12 +64,15 @@ export class AppComponent {
     }
   }
 
+  // if user click on the selected image then delete the file
   removeFile() {
     this.url = null;
   }
 
+  // on submission post
   writePost(msg, location, keyword) {
     let result: boolean = this.validate(this.url, this.menu, msg, this.userId, location, keyword);
+    // show result according to the validation
     if (result) {
       this.modalService.dismissAll();
       this.alertType = "success";
@@ -74,6 +83,7 @@ export class AppComponent {
     }
   }
 
+  // validate the input parameters
   validate(url: any, sharedType: string, fileDescription: any, userId: number, location: any, keyword: any) {
     if (url &&
       sharedType &&
@@ -86,6 +96,7 @@ export class AppComponent {
 
   }
 
+  // hide the alert
   closeAlert() {
     this.alertType = undefined;
     this.alertMessage = undefined;
