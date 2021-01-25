@@ -1,0 +1,26 @@
+.avatar {
+  height: 20%;
+  width: 20%;
+  border-radius: 50%;
+}
+
+.box {
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  border-color: black;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.container {
+  background-color: transparent;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: 5px;
+}
+
+.uploadImg {
+  height: 30%;
+  width: 30%;
+  border-radius: 10px;
+}
